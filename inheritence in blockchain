@@ -1,0 +1,32 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity ^0.6.0;
+
+import "./store.sol";
+
+contract storagefactory is simplestorgae{           //inheritance
+
+    simplestorgae[] public simplestorageArray;
+
+    function createSimpleStorage() public{
+
+        simplestorgae Simplestorage = new simplestorgae();
+        simplestorageArray.push(Simplestorage);
+
+    }
+
+    function sfstore(uint256 _stroageIndex , uint256 _storageNumber) public {
+        simplestorgae Simplestorage = simplestorgae(address(simplestorageArray[_stroageIndex]));
+        Simplestorage.store(_storageNumber);
+    }
+
+    function get(uint256 _stroageIndex) public view returns(uint256){
+        simplestorgae Simplestorage = simplestorgae(address(simplestorageArray[_stroageIndex]));
+        return Simplestorage.retrive();
+    }
+
+
+
+
+
+}
