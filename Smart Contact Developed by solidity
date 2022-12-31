@@ -1,0 +1,38 @@
+//SPDX-License-Identifier: MIT
+
+pragma solidity ^0.6.0;
+
+contract simplestorgae{
+
+    uint256 public favouriteNumber;
+    bool favortiteBool = false;
+    string favoritestring = "string";
+    int256 favnumber = -5;
+    address favadrdress = 0xf66D80D88855fBfdE49E753C0a8F3E1d9C5939cd;
+
+    struct People{
+
+        uint256 favouriteNumber;
+        string name;
+    }
+
+    //People public person = People({favouriteNumber : 2 , name: "Rownak"});
+
+    People[] public people;
+    mapping (string => uint256) public nameTofavouriteNumber;
+
+    function addperson(string memory _name , uint256 _favouriteNumber) public{
+        people.push(People(_favouriteNumber,_name));
+        nameTofavouriteNumber[_name] = _favouriteNumber;
+    }
+
+
+    function store(uint256 _favouriteNumber) public {
+        favouriteNumber = _favouriteNumber;
+    }
+
+    function retrive() public view returns(uint256)
+    {
+        return favouriteNumber;
+    }
+}
